@@ -19,26 +19,31 @@
 import os, sys, random, string
 from random import getrandbits
 from random import random, randint
+from time import sleep
 
 
-def dir_creator(path, d, w):
+def dir_creator(path, d, w, deep):
   d_gen = d #will eventually = [a for a in range(1, d)]
   w_gen = w
+ # print("In 10 sconds %s MB of data will be generated on the file system." % (d*w))
+ # sleep(10)
   dir_dict = name_gen(d_gen, w_gen)
   file_maker(path, dir_dict) #will change when path is introduced
 
 
 def file_maker(path, f_dict):
   MB = 1024*1024 # 1MB
-  alphabet = string.ascii_letters[0:52] + string.digits 
   count = 0
+  p = ""
   for f in f_dict:
-    os.mkdir(f)
+    p = os.path.join(path, f)
+    print("This is p %s" % p)
+    os.mkdir(p)
     f_list = f_dict[f]
     for file in f_list:
-      print("this is file %s" % file)
-      with open(os.path.join(f,file), 'wb') as b:
-        b.write(os.urandom(alphabet))
+      #print("this is file %s" % file)
+      with open(os.path.join(p,file), 'wb') as b:
+        b.write(os.urandom(MB))
 
 
 def name_gen(d_gen, w_gen): #define the names of the folders
@@ -63,7 +68,7 @@ def name_gen(d_gen, w_gen): #define the names of the folders
   return(dir_dict)
 
 
-dir_creator("sdf", 2, 10)
+dir_creator("/Users/blainekuhn/Git/Python/md5_checker", 2, 10, 3)
 
 
 
