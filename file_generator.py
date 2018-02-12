@@ -14,11 +14,18 @@
     Story:
     - A random number of directories and depth will be added
       - The number based on command line input
+<<<<<<< HEAD
     - Provide help
 
   Usage example:
 
     file_maker("/Users/blainekuhn/Git/Python/File-Generator", 2, 10, 3)
+=======
+
+Usage example:
+
+file_maker("/Users/blainekuhn/Git/Python/File-Generator", 2, 10, 3)
+>>>>>>> master
 """
 
 import os, sys, random, string
