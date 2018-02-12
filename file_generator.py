@@ -16,10 +16,9 @@
       - The number based on command line input
     - Provide help
 
-Usage example:
+  Usage example:
 
-file_maker("/Users/blainekuhn/Git/Python/File-Generator", 2, 10, 3)
-
+    file_maker("/Users/blainekuhn/Git/Python/File-Generator", 2, 10, 3)
 """
 
 import os, sys, random, string
