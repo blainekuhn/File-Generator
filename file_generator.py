@@ -14,6 +14,10 @@
     Story:
     - A random number of directories and depth will be added
       - The number based on command line input
+
+Usage example:
+
+file_maker("/Users/blainekuhn/Git/Python/File-Generator", 2, 10, 3)
 """
 
 import os, sys, random, string
@@ -29,7 +33,6 @@ def file_maker(path, d_gen, w_gen, deep):
   dirname = ""
   alphabet = string.ascii_letters[0:52] + string.digits #+ string.punctuation
   MB = 1024*1024 # 1MB
-
   while (deep +1) > 0:
     for a in range(d_gen):
       for x in random.sample(alphabet,random.randint(8, 15)):
@@ -44,22 +47,18 @@ def file_maker(path, d_gen, w_gen, deep):
       dirname = ""
     for f in dir_dict:
       p = os.path.join(path, f)
-      print("This is p %s" % p)
+      print("Created  %s" % p)
       os.mkdir(p)
       f_list = dir_dict[f]
       for file in f_list:
-        #print("FILE %s" % file)
-        #print("this is file %s" % file)
         current_file = os.path.join(p,file)
         with open(current_file, 'wb') as b:
           b.write(os.urandom(MB))
-#        dir_creator(p, d_gen, w_gen, deep)
       if (deep+1) > 0:
         file_maker(p, d_gen, w_gen, deep-1)
     return(dir_dict)
 
 
-file_maker("/Users/blainekuhn/Git/Python/File-Generator", 2, 10, 3)
 
 
 
